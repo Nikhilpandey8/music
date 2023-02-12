@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Indie Music Discovery</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      form {
+        width: 50%;
+        margin: 0 auto;
+        text-align: left;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      }
+      label {
+        display: block;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+      input[type="text"], select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+      }
+      input[type="text"]:focus, select:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+        outline: none;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+      .icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+.artist-icon {
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTkuMjIxIDIuNzc5TDE2LjE4OSAwLjE1MmwtMy42MyAyLjc3OUwxNi4xODkgNS4wMTFsMy42MyAyLjc3OUwxOS4yMjEgMi43Nzl6TTIwLjU3MiA0LjIyMkwxNi4xODkgOC41MDFsLTMuNjMgMi43NzlMMTYuMTg5IDE0LjE4OWwzLjYzIDIuNzc5TDIwLjU3MiA0LjIyMXoiLz48L3N2Zz4=");
+      }
+.genre-icon {
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTcuMjE5IDIuMzQ2QzE3LjIxOSAyLjM0NiAxNy41MjIgMi4wMDYgMTcuNTIyIDEuNjI4QzE3LjUyMiAxLjI1IDE3LjIxOSAwLjkxIDE2Ljg0MSAwLjkxQzE2LjQ2MyAwLjkxIDE2LjE1OSAxLjI1IDE2LjE1OSAxLjYyOEMxNi4xNTkgMi4wMDYgMTYuNDYyIDIuMzQ2IDE2LjQ2MiAyLjM0NkMxNi41NjMgMi44NjggMTYuNzIgMy4zNjEgMTYuODQxIDMuNjU1QzE2Ljk2MiAzLjk0OSAxNy4xODggNC4xMTYgMTcuNTIyIDQuMTk1QzE3Ljg1NiA0LjI3NCAxOC4wNjkgNC4yNzQgMTguMzU0IDQuMTk1QzE4LjYzOSA0LjExNiAxOC44NjQgMy45NDkgMTguOTg2IDMuNjU1QzE5LjEwNyAzLjM2MSAxOS4yMTkgMi44NjggMTkuMjE5IDIuMzQ2Wk0xNy4yMTkgNS4yMjZDMTcuMjE5IDUuMjI2IDE3LjUyMiA0Ljg4NiAxNy41MjIgNC41MDhDMTYuNTIyIDQuMjUxIDE2LjE1OSA0IDE2Ljg0MSA0QzE3LjUyMiA0IDE3Ljg1NiA0LjI1IDE4LjM1NCA0LjUwOEMxOC44NTIgNC43NTYgMTguOTg2IDUuMzU5IDE4Ljk4NiA1LjY1M0MxOC45ODYgNS45NDcgMTguNjM5IDYuMTYzIDE4LjM1NCA2LjI0MkMxOC4wNjkgNi4zMjEgMTcuODU2IDYuMzIxIDE3LjUyMiA2LjI0MkMxNy4xODggNi4xNjMgMTYuOTcgNS45NDcgMTYuNzIgNS42NTNDMTYuNzIgNS4zNTkgMTYuODU2IDQuNzU2IDE3LjIxOSA0LjUwOEMxNy41ODIgNC4yNTEgMTcuNjE1IDQuMDAxIDE3LjYxNSA0LjAwMUwxNy42MTUgNS4yMjZaIiBmaWxsPSIjRkZGRkZGIj48L3BhdGg+PC9zdmc+");
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+      .genre-icon:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .info {
+        padding: 20px;
+      }
+
+      .info h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .info p {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      .info a {
+        font-size: 14px;
+        font-weight: bold;
+        color: #0071C5;
+        text-decoration: none;
+        border-bottom: 2px solid #0071C5;
+        padding-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="artist-section">
+        <div class="artist-icon">
+          <img src="https://via.placeholder.com/150x150" alt="Artist">
+        </div>
+        <div class="info">
+          <h2>Artist Name</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer commodo malesuada sem, id suscipit velit malesuada at. </p>
+          <a href="#">Learn More</a>
+        </div>
+      </section>
+      <section class="genre-section">
+        <div class="genre-icon"></div>
+        <div class="info">
+          <h2>Genre</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer commodo malesuada sem, id suscipit velit malesuada at. </p>
+          <a href="#">Learn More</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Music Hub</p>
+    </footer>
+  </body>
+</html>
